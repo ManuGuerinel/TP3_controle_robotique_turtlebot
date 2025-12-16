@@ -1,0 +1,24 @@
+[0.564s] Invoking command in '/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/src/turtlebot_controller': PYTHONPATH=/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/build/turtlebot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/turtlebot_controller build --build-base /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/build/turtlebot_controller/build install --record /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/build/turtlebot_controller/install.log --single-version-externally-managed install_data
+[0.770s] running egg_info
+[0.770s] writing ../../build/turtlebot_controller/turtlebot_controller.egg-info/PKG-INFO
+[0.770s] writing dependency_links to ../../build/turtlebot_controller/turtlebot_controller.egg-info/dependency_links.txt
+[0.771s] writing entry points to ../../build/turtlebot_controller/turtlebot_controller.egg-info/entry_points.txt
+[0.771s] writing requirements to ../../build/turtlebot_controller/turtlebot_controller.egg-info/requires.txt
+[0.771s] writing top-level names to ../../build/turtlebot_controller/turtlebot_controller.egg-info/top_level.txt
+[0.772s] reading manifest file '../../build/turtlebot_controller/turtlebot_controller.egg-info/SOURCES.txt'
+[0.773s] writing manifest file '../../build/turtlebot_controller/turtlebot_controller.egg-info/SOURCES.txt'
+[0.774s] running build
+[0.774s] running build_py
+[0.774s] copying turtlebot_controller/teleop_keyboard.py -> /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/build/turtlebot_controller/build/lib/turtlebot_controller
+[0.774s] running install
+[0.774s] running install_lib
+[0.775s] copying /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/build/turtlebot_controller/build/lib/turtlebot_controller/teleop_keyboard.py -> /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller
+[0.775s] byte-compiling /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller/teleop_keyboard.py to teleop_keyboard.cpython-310.pyc
+[0.776s] running install_data
+[0.776s] running install_egg_info
+[0.778s] removing '/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller-0.0.0-py3.10.egg-info' (and everything under it)
+[0.778s] Copying ../../build/turtlebot_controller/turtlebot_controller.egg-info to /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller-0.0.0-py3.10.egg-info
+[0.779s] running install_scripts
+[0.798s] Installing teleop_keyboard script to /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/turtlebot_controller
+[0.798s] writing list of installed files to '/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/build/turtlebot_controller/install.log'
+[0.831s] Invoked command in '/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/src/turtlebot_controller' returned '0': PYTHONPATH=/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/build/turtlebot_controller/prefix_override:/usr/lib/python3/dist-packages/colcon_core/task/python/colcon_distutils_commands:/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages:${PYTHONPATH} /usr/bin/python3 -W ignore:setup.py install is deprecated -W ignore:easy_install command is deprecated setup.py egg_info --egg-base ../../build/turtlebot_controller build --build-base /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/build/turtlebot_controller/build install --record /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/build/turtlebot_controller/install.log --single-version-externally-managed install_data
