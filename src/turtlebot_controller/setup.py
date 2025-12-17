@@ -25,6 +25,7 @@ setup(
     entry_points={
         'console_scripts': [
             'teleop_keyboard = turtlebot_controller.teleop_keyboard:main',
+            'traj_enregistrement = turtlebot_controller.traj_enregistrement:main',
         ],
     },
 )

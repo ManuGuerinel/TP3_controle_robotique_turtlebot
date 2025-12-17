@@ -1,5 +1,7 @@
+/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller/traj_enregistrement.py
 /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller/__init__.py
 /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller/teleop_keyboard.py
+/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller/__pycache__/traj_enregistrement.cpython-310.pyc
 /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller/__pycache__/__init__.cpython-310.pyc
 /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller/__pycache__/teleop_keyboard.cpython-310.pyc
 /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/share/ament_index/resource_index/packages/turtlebot_controller
@@ -12,3 +14,4 @@
 /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller-0.0.0-py3.10.egg-info/SOURCES.txt
 /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/python3.10/site-packages/turtlebot_controller-0.0.0-py3.10.egg-info/entry_points.txt
 /home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/turtlebot_controller/teleop_keyboard
+/home/guerinel/Documents/info_rob/ROS2/TP3_controle_robotique_turtlebot/install/turtlebot_controller/lib/turtlebot_controller/traj_enregistrement
