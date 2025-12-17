@@ -4,8 +4,8 @@ from sensor_msgs.msg import JointState
 
 import threading
 import time
-import json
 import csv
+import os
 
 
 class TrajectoireEnregistrement(Node):
@@ -13,94 +13,113 @@ class TrajectoireEnregistrement(Node):
     def __init__(self):
         super().__init__('trajectoire_enregistrement')
 
-        # Subscriber
         self.subscription = self.create_subscription(JointState, '/joint_states', self.joint_state_callback, 10)
 
-        # Etat interne
+        # Etat
         self.enregistrement = False
         self.current_trajectory = []
-        self.trajectory_num = 0
         self.start_time = time.time()
+        self.trajectory_num = 0
 
-        self.get_logger().info("Enregistrement de trajectoire prêt (r (lancer)/ s (stop)/ save)")
+        # Thread pour les entrée clavier
+        self.command_thread = threading.Thread(
+            target=self.command_listener,
+            daemon=True
+        )
+        self.command_thread.start()
+
+        self.get_logger().info("tapper : 'r' (enregitrement) | 's' (stop) | 'save' (sauvegarde) | 'q' (quitter)\n")
 
     def joint_state_callback(self, msg):
         if not self.enregistrement:
             return
         
-        
-        elif time.time() - self.start_time > 10 :
-            self.get_logger().warn("Enregistrement trop long (>10s), arrêt automatique.")
-            self.stop_enregistrement()
-            return
+        if time.time() - self.start_time > 10:
+                self.stop_enregistrement()
+                self.get_logger().warn("Stop de l'enregistrement (>10s)")
+                self.get_logger().info("tapper : 'r' (enregitrement) | 's' (stop) | 'save' (sauvegarde) | 'q' (quitter):\n")
 
-        # - récupérer timestamp
         timestamp = msg.header.stamp.sec + msg.header.stamp.nanosec * 1e-9
-        # - récupérer positions
         positions = list(msg.position)
-        # - ajouter à la trajectoire courante
-        self.current_trajectory.append({'time': timestamp, 'positions': positions})
-        # - stocker dans self.current_trajectory
-        pass
+
+        self.current_trajectory.append({
+            'time': timestamp,
+            'positions': positions
+        })
+
+    def command_listener(self):
+        while rclpy.ok():
+            cmd = input("tapper : 'r' (enregitrement) | 's' (stop) | 'save' (sauvegarde) | 'q' (quitter):\n")
+
+            if cmd == 'r':
+                self.start_enregistrement()
+
+            elif cmd == 's':
+                self.stop_enregistrement()
+
+            elif cmd == 'save':
+                self.save_trajectory()
+
+            elif cmd == 'q':
+                self.stop_enregistrement()
+                self.get_logger().info("Quitter le programme")
+                rclpy.shutdown()
+                break
 
     def start_enregistrement(self):
-        self.get_logger().info("Debut de l'enregistrement...")
+        if self.enregistrement:
+            self.get_logger().warn("Enregistrement déjà en cours")
+            return
+
         self.current_trajectory = []
-        self.enregistrement = True
         self.start_time = time.time()
+        self.enregistrement = True
+        self.get_logger().info("Début enregistrement")
 
     def stop_enregistrement(self):
+        if not self.enregistrement:
+            return
+
         duree = time.time() - self.start_time
-        if 5 <= duree:  # le maximum 10s est gerer dans joint_state_callback
-            self.get_logger().info(f"RFin de l'enregistrement, Duree: {duree:.2f} seconds")
-            self.enregistrement = False
-        pass
+        self.enregistrement = False
+
+        if 5 <= duree:
+            self.get_logger().info(f"Fin enregistrement ({duree:.2f} s)")
+        else:
+            self.get_logger().warn(f"Durée trop courte : {duree:.2f} s")
 
     def save_trajectory(self):
         if len(self.current_trajectory) == 0:
-            self.get_logger().warn("Aucune trajectoire à sauvegarder.")
+            self.get_logger().warn("Aucune donnée à sauvegarder")
             return
+
+        os.makedirs("trajectoire_save", exist_ok=True)
 
         self.trajectory_num += 1
         filename = f"trajectoire_save/trajectory_{self.trajectory_num}.csv"
 
-        with open(filename, mode='w', newline='') as file:
-            writer = csv.writer(file)
+        with open(filename, 'w', newline='') as f:
+            writer = csv.writer(f)
 
-            # Header
-            nb_axe = len(self.current_trajectory[0]['positions'])
-            header = ['timestamp'] + [f'axe_{i+1}' for i in range(nb_axe)]
+            nb_axes = len(self.current_trajectory[0]['positions'])
+            header = ['timestamp'] + [f'axe_{i+1}' for i in range(nb_axes)]
             writer.writerow(header)
 
-            # Data
+            first_sample = self.current_trajectory[0]
+            init_time = first_sample['time']
             for sample in self.current_trajectory:
-                row = [sample['time']] + sample['positions']
-                writer.writerow(row)
+                writer.writerow(
+                    [sample['time']-init_time] + sample['positions']
+                )
 
-        self.get_logger().info(f"Trajectoire sauvegardée dans {filename}")
-
+        self.get_logger().info(f"{filename} à bien été sauvegardé.")
 
 def main(args=None):
     rclpy.init(args=args)
     node = TrajectoireEnregistrement()
-
-    while rclpy.ok():
-        rclpy.spin_once(node, timeout_sec=0.1)
-
-        cmd = input("Commande (r / s / save): ")
-
-        if cmd == 'r':
-            node.start_enregistrement()
-
-        elif cmd == 's':
-            node.stop_enregistrement()
-
-        elif cmd == 'save':
-            node.save_trajectory()
-
+    rclpy.spin(node)
     node.destroy_node()
     rclpy.shutdown()
-
 
 if __name__ == '__main__':
     main()

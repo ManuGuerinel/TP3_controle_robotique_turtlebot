@@ -27,3 +27,8 @@ Pour controller le robot utiliser les touche :
 `devant: z | derriere: s | tourner gauche: q | tourner droite: d | arrêt d'urgence: a`
 
 ## module 2
+Pour lancer le noeud d'enregistrement de trajectoire :
+`colcon build --packages-select turtlebot_controller
+source install/setup.bash
+ros2 run turtlebot_controller traj_enregistrement`
+

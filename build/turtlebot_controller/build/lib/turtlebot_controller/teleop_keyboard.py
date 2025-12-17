@@ -91,7 +91,7 @@ class TeleopController(Node):
             f'  Vitesse angulaire max: { ANGULAR_SPEED} rad/s'
         )
         self.get_logger().info(f"Contrôles :")
-        self.get_logger().info(f"devant: z | derriere: s | tourner gauche: q | tourner droite: d | arrêt d'urgence: a")
+        self.get_logger().info(f"devant: z | derriere: s | tourner gauche: q | tourner droite: d | arrêt d'urgence: a | exit: x")
     
 
     def control_loop(self):
@@ -115,6 +115,12 @@ class TeleopController(Node):
             self.linear_velocity = 0.0
             self.angular_velocity = 0.0
             self.get_logger().warn("Arrêt d'urgence (a) : Vitesse réinitialisée à zéro.")
+        
+        if key == 'x':
+            self.linear_velocity = 0.0
+            self.angular_velocity = 0.0
+            self.get_logger().warn("Exit (e) : Vitesse réinitialisée à zéro et fin du noeud.")
+            raise KeyboardInterrupt
         
         if key in KEY_MAPPING:
             (self.linear_velocity, self.angular_velocity) = KEY_MAPPING[key]
@@ -144,6 +150,8 @@ def main(args=None):
     except KeyboardInterrupt:
         # Arrêter le robot proprement
         stop_cmd = Twist()
+        stop_cmd.linear.x = 0.0
+        stop_cmd.angular.z = 0.0
         node.cmd_vel_pub.publish(stop_cmd)
     finally:
         node.destroy_node()
