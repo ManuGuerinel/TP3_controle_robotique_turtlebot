@@ -26,9 +26,12 @@ ros2 run turtlebot_controller teleop_keyboard`
 Pour controller le robot utiliser les touche : 
 `devant: z | derriere: s | tourner gauche: q | tourner droite: d | arrêt d'urgence: a`
 
-## module 2
+## module 2 : Enregistrement Capturer 3+ trajectoires
 Pour lancer le noeud d'enregistrement de trajectoire :
 `colcon build --packages-select turtlebot_controller
 source install/setup.bash
 ros2 run turtlebot_controller traj_enregistrement`
 
+## Module 3 : Analyse Visualiser les données
+script Python capable de charger les trajectoires enregistrées
+`python3 traj_annalyse.py`
