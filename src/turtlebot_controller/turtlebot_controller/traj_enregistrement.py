@@ -36,15 +36,17 @@ class TrajectoireEnregistrement(Node):
         
         if time.time() - self.start_time > 10:
                 self.stop_enregistrement()
-                self.get_logger().warn("Stop de l'enregistrement (>10s)")
+                self.get_logger().warn("Stop de l'enregistrement (>10s)\n")
                 self.get_logger().info("tapper : 'r' (enregitrement) | 's' (stop) | 'save' (sauvegarde) | 'q' (quitter):\n")
 
         timestamp = msg.header.stamp.sec + msg.header.stamp.nanosec * 1e-9
-        positions = list(msg.position)
+        positions = list(msg.position)      # repure les position des roues
+        vitesse = list(msg.velocity)        # repure les vitesses des roues
 
         self.current_trajectory.append({
             'time': timestamp,
-            'positions': positions
+            'positions': positions,
+            'vitesses': vitesse
         })
 
     def command_listener(self):
@@ -102,14 +104,14 @@ class TrajectoireEnregistrement(Node):
             writer = csv.writer(f)
 
             nb_axes = len(self.current_trajectory[0]['positions'])
-            header = ['timestamp'] + [f'axe_{i+1}' for i in range(nb_axes)]
+            header = ['timestamp'] + ['"wheel_left_joint" : pos', '"wheel_right_joint" : pos', '"wheel_left_joint" : vel', '"wheel_right_joint" : vel']
             writer.writerow(header)
 
             first_sample = self.current_trajectory[0]
             init_time = first_sample['time']
             for sample in self.current_trajectory:
                 writer.writerow(
-                    [sample['time']-init_time] + sample['positions']
+                    [sample['time']-init_time] + sample['positions'] + sample['vitesses']
                 )
 
         self.get_logger().info(f"{filename} à bien été sauvegardé.")
