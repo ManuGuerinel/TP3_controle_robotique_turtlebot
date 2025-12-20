@@ -1,5 +1,7 @@
-# TP3 ROS2 .....
+# TP3 ROS2 : Contrôle Robotique
+Auteur : Manu GUERINEL
 
+PROJET : Polytech Sorbonne ROB4 2025
 
 ## installation de turtlebot3 :
 
