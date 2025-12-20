@@ -3,6 +3,12 @@ Auteur : Manu GUERINEL
 
 PROJET : Polytech Sorbonne ROB4 2025
 
+Dans se projet, le but est de:
+- Faire de la téléoperation avec son clavier du robot turtlebot
+- Enregistrer et sauvegarder des trajectoires
+- Annalyser ces Trajectoires
+- Rejouer des trajectoires sauvegardé
+
 ## installation de turtlebot3 :
 
 `sudo apt update
