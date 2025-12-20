@@ -7,7 +7,7 @@ Dans se projet, le but est de:
 - Faire de la téléoperation avec son clavier du robot turtlebot
 - Enregistrer et sauvegarder des trajectoires
 - Annalyser ces Trajectoires
-- Rejouer des trajectoires sauvegardé
+- Rejouer des trajectoires sauvegardées
 
 ## installation de turtlebot3 :
 
