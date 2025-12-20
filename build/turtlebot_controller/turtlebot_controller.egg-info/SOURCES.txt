@@ -14,4 +14,6 @@ test/test_flake8.py
 test/test_pep257.py
 turtlebot_controller/__init__.py
 turtlebot_controller/teleop_keyboard.py
+turtlebot_controller/traj_annalyse.py
 turtlebot_controller/traj_enregistrement.py
+turtlebot_controller/traj_rejeu.py

@@ -26,6 +26,7 @@ setup(
         'console_scripts': [
             'teleop_keyboard = turtlebot_controller.teleop_keyboard:main',
             'traj_enregistrement = turtlebot_controller.traj_enregistrement:main',
+            'traj_rejeu = turtlebot_controller.traj_rejeu:main',
         ],
     },
 )

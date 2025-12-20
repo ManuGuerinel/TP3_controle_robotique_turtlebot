@@ -33,5 +33,13 @@ source install/setup.bash
 ros2 run turtlebot_controller traj_enregistrement`
 
 ## Module 3 : Analyse Visualiser les données
-script Python capable de charger les trajectoires enregistrées
+script Python capable de charger les trajectoires enregistrées en choisissant la trajectoire désiré.
 `python3 traj_annalyse.py`
+
+affichage :
+- des positions et vitesses angulaires des roues (left et right)
+- des min/max des positions
+- de la moyenne des vitesses de chacune des roues
+
+## Module 4 : Rejeu: Robot reproduit une trajectoire
+
