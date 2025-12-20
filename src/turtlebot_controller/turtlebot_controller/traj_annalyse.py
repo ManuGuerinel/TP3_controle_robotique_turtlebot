@@ -10,6 +10,7 @@ import matplotlib.pyplot as plt
 REPERTOIRE_DATA = "../../../trajectoire_save"
 REPERTOIRE_PLOT = "../../../plots"
 
+### =================[ Fonctions utilitaires ]==================
 
 def list_csv_fichiers():
     fichiers = [f for f in os.listdir(REPERTOIRE_DATA) if f.endswith(".csv")]
@@ -131,6 +132,8 @@ def plot_trajectoire(time_pos, time_vel, positions, vitesses, filename):
     plt.close()
 
     print(f"Graphique sauvegardé : {chemin_sauvegarde}")
+
+### =================[ Main ]==================
 
 def main():
     while True:

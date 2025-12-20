@@ -21,7 +21,7 @@ KEY_MAPPING = {
     'd': (0.0, -ANGULAR_SPEED),  # droite
 }
 
-# ==================[ Gestion du clavier ]==================
+### ==================[ Gestion du clavier ]==================
 class KeyReader:
     """Gère le terminal en mode raw pour lire une touche sans Enter.
 
@@ -65,7 +65,8 @@ class KeyReader:
                 termios.tcsetattr(self.fd, termios.TCSANOW, self.old_settings)
             except Exception:
                 pass
-# =========================================================
+
+### ==================[ Noeud ROS2 ]==================
 
 class TeleopController(Node):
     def __init__(self):
@@ -139,7 +140,7 @@ class TeleopController(Node):
 
         self.cmd_vel_pub.publish(cmd)
         
-
+#### ==================[ Main ]==================
 
 def main(args=None):
     rclpy.init(args=args)

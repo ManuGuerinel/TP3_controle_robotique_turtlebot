@@ -21,8 +21,8 @@ def charger_csv(chemin_fichier):
     # if data.ndim == 1:
     #     data = data.reshape(1, -1)
 
-    nb_pos = data[0,0]-1
-    nb_vel = data[0,3]-1
+    nb_pos = int(data[0,0])-1
+    nb_vel = int(data[0,3])-1
     time_pos = data[1:nb_pos, 0]
     time_vel = data[1:nb_vel, 3]
     positions = data[1:nb_pos, 1:3]
@@ -93,8 +93,8 @@ def plot_trajectoire(time_pos, time_vel, positions, vitesses, filename):
 
     # Vitesses (echelle a droite)
     ax2 = ax1.twinx()
-    ax2.plot(time_vel[:-1], vitesses[:, 0], label="linear velocity", color='red')
-    ax2.plot(time_vel[:-1], vitesses[:, 1], label="angular Velocity", color='orange')
+    ax2.plot(time_vel, vitesses[:, 0], label="linear velocity", color='red')
+    ax2.plot(time_vel, vitesses[:, 1], label="angular Velocity", color='orange')
     ax2.set_ylabel("Vitesse", color='red')
     ax2.tick_params(axis='y', labelcolor='red')
 
@@ -168,7 +168,7 @@ def main():
         for i in range(len(annalyse_tab)-1):
             print(f"{data_annalyse[i]} : min = {annalyse_tab[i][0]['val']:.3f}, max = {annalyse_tab[i][1]['val']:.3f}")
         print(f"{data_annalyse[4]} : left = {annalyse_tab[4][0]:.3f}, right = {annalyse_tab[4][1]:.3f}")
-        plot_trajectoire(time, positions, vitesses, filename)
+        plot_trajectoire(time_pos, time_vel, positions, vitesses, filename)
 
 if __name__ == "__main__":
     main()

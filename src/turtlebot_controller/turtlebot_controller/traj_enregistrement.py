@@ -14,6 +14,7 @@ import time
 import csv
 import os
 
+### =================[ Noeud ROS2 ]==================
 
 class TrajectoireEnregistrement(Node):
 
@@ -166,6 +167,8 @@ class TrajectoireEnregistrement(Node):
                     )
 
         self.get_logger().info(f"{filename} à bien été sauvegardé.")
+
+### =================[ Main ]==================
 
 def main(args=None):
     rclpy.init(args=args)
